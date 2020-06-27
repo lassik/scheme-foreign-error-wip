@@ -1,0 +1,59 @@
+= SRFI nnn
+
+== Rationale
+
+== Specification
+
+=== Collections
+
+Known collections:
+
+|===
+|`errno`|C/POSIX/Unix system call errors
+|`windows`|Windows API ("win32") errors
+|`winsock`|Windows Sockets errors
+|`sqlite`|SQLite database errors
+|`oracle`|Oracle database errors
+|===
+
+=== Procedures
+
+==== Error predicate
+
+(foreign-error? obj) -> boolean
+
+==== Error constructors
+
+(make-foreign-error alist) -> ferr
+
+(raise-foreign-error alist)
+
+==== Error field getters
+
+(foreign-error:error-set ferr) -> symbol
+
+(foreign-error:symbol ferr) -> symbol
+
+(foreign-error:number ferr) -> exact integer
+
+(foreign-error:message ferr [locale]) -> string
+
+(foreign-error:locales ferr) -> list of symbols
+
+(foreign-error:scheme-procedure ferr) -> symbol
+
+(foreign-error:foreign-procedure ferr) -> symbol
+
+(foreign-error:data ferr) -> alist
+
+==== Error set procedures
+
+(provide-foreign-error error-set symbol number messages)
+
+(foreign-error-sets) -> list of symbols
+
+(foreign-error-set:fold kons knil error-set)
+
+(foreign-error-set:by-symbol set symbol) -> ferr
+
+(foreign-error-set:by-number set number) -> ferr
