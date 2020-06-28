@@ -1,4 +1,4 @@
-*.html
 *.exe
+*.html
 *.obj
-/grovel
+/grovel-errno
