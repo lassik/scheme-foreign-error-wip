@@ -7,7 +7,7 @@ static const char *grovel_message(long number) {
 }
 
 static const char *grovel_filename(void) {
-    return "errno-sqlite.scm";
+    return "errors-sqlite.scm";
 }
 
 static void grovel(void) {

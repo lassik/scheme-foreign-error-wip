@@ -11,11 +11,11 @@ static const char *grovel_message(long number) {
 
 static const char *grovel_filename(void) {
     static struct utsname names;
-    static char buf[32];
+    static char buf[64];
     char *p;
 
     if (uname(&names) == -1) exit(1);
-    snprintf(buf, sizeof(buf), "errno-%s.scm", names.sysname);
+    snprintf(buf, sizeof(buf), "errors-errno-%s.scm", names.sysname);
     for (p = buf; *p; p++) {
         *p = (char)tolower(*p);
     }

@@ -59,7 +59,7 @@ static const char *grovel_message(long number) {
 }
 
 static const char *grovel_filename(void) {
-    return "errno-windows.scm";
+    return "errors-windows.scm";
 }
 
 static void grovel(void) {

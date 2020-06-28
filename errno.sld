@@ -3,7 +3,7 @@
   (export errno-number->symbol
           errno-number->message
           errno-symbol->number)
-  (include "errno-darwin.scm")
+  (include "errors-errno-darwin.scm")
   (begin
 
     (define (errno-search key key-offset val-offset)

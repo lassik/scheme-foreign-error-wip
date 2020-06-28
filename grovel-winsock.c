@@ -59,7 +59,7 @@ static const char *grovel_message(long number) {
 }
 
 static const char *grovel_filename(void) {
-    return "errno-winsock.scm";
+    return "errors-winsock.scm";
 }
 
 static void grovel(void) {
