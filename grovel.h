@@ -22,7 +22,7 @@ static int compare_errors(const void *a_void, const void *b_void) {
     const struct error *b = b_void;
     if (a->number < b->number) return -1;
     if (a->number > b->number) return 1;
-    return 0;
+    return strcmp(a->symbol, b->symbol);
 }
 
 static void gr(int number, const char *symbol) {
