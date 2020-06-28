@@ -2,19 +2,40 @@
 
 #include <errno.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
-#define PR(symbol) pr(#symbol, symbol)
+#define PR(symbol) pr(symbol, #symbol)
 
-static void pr(const char *symbol, int number) {
-    printf("\"%s\" %d \"%s\"\n", symbol, number, strerror(number));
+struct error { int number; const char *symbol; };
+static struct error errors[256];
+static size_t nerror;
+
+static int compare_errors(const void *a_void, const void *b_void) {
+    const struct error *a = a_void;
+    const struct error *b = b_void;
+    if (a->number < b->number) return -1;
+    if (a->number > b->number) return 1;
+    return 0;
+}
+
+static void pr(int number, const char *symbol) {
+    struct error *error = &errors[nerror++];
+    error->number = number;
+    error->symbol = symbol;
 }
 
 static void pr_all(void);
 
 int main(void) {
-    printf("(define errno-vector (vector\n");
+    struct error *error;
     pr_all();
+    qsort(errors, nerror, sizeof(struct error), compare_errors);
+    printf("(define errno-vector (vector\n");
+    for (error = errors; error < errors + nerror; error++) {
+        printf("%d '%s \"%s\"\n",
+            error->number, error->symbol, strerror(error->number));
+    }
     printf("))\n");
     return 0;
 }
