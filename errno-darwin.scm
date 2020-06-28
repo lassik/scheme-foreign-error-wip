@@ -1,4 +1,4 @@
-(define errno-vector (vector
+(define error-vector (vector
 1 'EPERM "Operation not permitted"
 2 'ENOENT "No such file or directory"
 3 'ESRCH "No such process"
@@ -81,7 +81,13 @@
 79 'EFTYPE "Inappropriate file type or format"
 80 'EAUTH "Authentication error"
 81 'ENEEDAUTH "Need authenticator"
+82 'EPWROFF "Device power is off"
+83 'EDEVERR "Device error"
 84 'EOVERFLOW "Value too large to be stored in data type"
+85 'EBADEXEC "Bad executable (or shared library)"
+86 'EBADARCH "Bad CPU type in executable"
+87 'ESHLIBVERS "Shared library version mismatch"
+88 'EBADMACHO "Malformed Mach-o file"
 89 'ECANCELED "Operation canceled"
 90 'EIDRM "Identifier removed"
 91 'ENOMSG "No message of desired type"
@@ -96,7 +102,8 @@
 100 'EPROTO "Protocol error"
 101 'ETIME "STREAM ioctl timeout"
 102 'EOPNOTSUPP "Operation not supported on socket"
+103 'ENOPOLICY "Policy not found"
 104 'ENOTRECOVERABLE "State not recoverable"
 105 'EOWNERDEAD "Previous owner died"
-106 'ELAST "Interface output queue is full"
+106 'EQFULL "Interface output queue is full"
 ))
