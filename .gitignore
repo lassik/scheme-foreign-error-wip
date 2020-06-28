@@ -2,3 +2,4 @@
 *.html
 *.obj
 /grovel-errno
+/grovel-sqlite
